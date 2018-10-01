@@ -2,8 +2,8 @@ package arraryList
 
 import "fmt"
 
-type ArraryList struct{
-	Slice  []interface{}
+type ArraryList struct {
+	Slice []interface{}
 }
 
 func test() {
@@ -69,5 +69,10 @@ func (this *ArraryList) Get(s []interface{}, index int) (interface{}) {
 	return s[index]
 }
 
+func (this *ArraryList) GetFirst(s []interface{}) (interface{}) {
+	return this.Get(s, 0)
+}
 
-
+func (this *ArraryList) GetLast(s []interface{}) (interface{}) {
+	return this.Get(s, len(s)-1)
+}
