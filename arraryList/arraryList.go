@@ -2,7 +2,9 @@ package arraryList
 
 import "fmt"
 
-type ArraryList struct{}
+type ArraryList struct{
+	Slice  []interface{}
+}
 
 func test() {
 	//s := make([]interface{}, 10)
@@ -22,7 +24,7 @@ func test() {
 	s = arraryList.Edit(s, 100, 5)
 	fmt.Println("edit s and cap:", s, cap(s))
 
-	s = arraryList.Delete(s, 5)
+	s = arraryList.Remove(s, 5)
 	fmt.Println("delete s and cap:", s, cap(s))
 
 	value := arraryList.Get(s, 5)
@@ -58,7 +60,7 @@ func (this *ArraryList) Edit(s []interface{}, elem interface{}, index int) ([]in
 	return s
 }
 
-func (this *ArraryList) Delete(s []interface{}, index int) ([]interface{}) {
+func (this *ArraryList) Remove(s []interface{}, index int) ([]interface{}) {
 	ss := append(s[:index], s[index+1:]...)
 	return ss
 }
