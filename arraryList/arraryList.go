@@ -61,7 +61,16 @@ func (this *ArraryList) Edit(s []interface{}, elem interface{}, index int) ([]in
 }
 
 func (this *ArraryList) Remove(s []interface{}, index int) ([]interface{}) {
+	if index == 0 {
+		ss := this.RemoveFirst(s)
+		return ss
+	}
 	ss := append(s[:index], s[index+1:]...)
+	return ss
+}
+
+func (this *ArraryList) RemoveFirst(s []interface{}) ([]interface{}) {
+	ss := s[1:len(s)]
 	return ss
 }
 

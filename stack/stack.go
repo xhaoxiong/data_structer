@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cast"
 )
 
-type Stack struct {
+type ArraryStack struct {
 	arraryList.ArraryList
 }
 
@@ -22,38 +22,38 @@ func main() {
 
 }
 
-func InitNoParam() *Stack {
-	return &Stack{arraryList.ArraryList{Slice: make([]interface{}, 0)}}
+func InitNoParam() *ArraryStack {
+	return &ArraryStack{arraryList.ArraryList{Slice: make([]interface{}, 0)}}
 }
 
-func Init(cap int) *Stack {
-	return &Stack{arraryList.ArraryList{Slice: make([]interface{}, 0, cap)}}
+func Init(cap int) *ArraryStack {
+	return &ArraryStack{arraryList.ArraryList{Slice: make([]interface{}, 0, cap)}}
 }
 
-func (this *Stack) Push(elem interface{}) {
+func (this *ArraryStack) Push(elem interface{}) {
 	this.ArraryList.AddLast(&this.Slice, elem)
 }
 
-func (this *Stack) Pop() {
+func (this *ArraryStack) Pop() {
 	this.Slice = this.Remove(this.Slice, len(this.Slice)-1)
 }
 
-func (this *Stack) Peek() (interface{}) {
+func (this *ArraryStack) Peek() (interface{}) {
 	return this.GetLast(this.Slice)
 }
 
-func (this *Stack) GetSize() (int) {
+func (this *ArraryStack) GetSize() (int) {
 	return len(this.Slice)
 }
 
-func (this *Stack) IsEmpty() (bool) {
+func (this *ArraryStack) IsEmpty() (bool) {
 	if len(this.Slice) == 0 {
 		return true
 	}
 	return false
 }
 
-func (this *Stack) ToString() string {
+func (this *ArraryStack) ToString() string {
 	s := "["
 	for index, sl := range this.Slice {
 
@@ -66,6 +66,6 @@ func (this *Stack) ToString() string {
 	return s
 }
 
-func (this *Stack) GetCapacity() (interface{}) {
+func (this *ArraryStack) GetCapacity() (interface{}) {
 	return cap(this.Slice)
 }

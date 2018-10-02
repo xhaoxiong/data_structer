@@ -3,15 +3,13 @@ package main
 import (
 	"important_test/data_structer/stack"
 	"github.com/spf13/cast"
-	"fmt"
 )
 
 func main() {
-	fmt.Println(isValid())
 }
 
-func isValid() bool {
-	s := "{[(])}"
+func isValid(s string) bool {
+
 
 	stack := stack.InitNoParam()
 	for _, ss := range s {
