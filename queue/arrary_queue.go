@@ -1,4 +1,4 @@
-package main
+package queue
 
 import (
 	"important_test/data_structer/arraryList"
