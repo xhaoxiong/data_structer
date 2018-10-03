@@ -23,13 +23,37 @@ func main() {
 		link.AddFirst(i)
 	}
 	link.ToString()
-	fmt.Println(link.Get(1))
 	link.Set(10, 1)
+	link.ToString()
+	link.RemoveFirst()
+	link.ToString()
+	link.RemoveLast()
 	link.ToString()
 }
 
-func (this *Link) GetSize() {
+func (this *Link) Remove(index int) (elem interface{}) {
+	if index < 0 || index > this.size {
+		panic("out of range")
+	}
+	prev := this.dummyHead
 
+	for i := 0; i < index; i++ {
+		prev = prev.Next
+	}
+	retNode := prev.Next
+	prev.Next = retNode.Next
+	retNode.Next = nil
+	elem = retNode.Elem
+	this.size--
+	return
+}
+
+func (this *Link) RemoveFirst() {
+	this.Remove(0)
+}
+
+func (this *Link) RemoveLast() {
+	this.Remove(this.size - 1)
 }
 
 func (this *Link) IsEmpty() (bool) {
