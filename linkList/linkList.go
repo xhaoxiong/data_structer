@@ -1,12 +1,11 @@
-package main
+package linkList
 
 import (
 	"github.com/pkg/errors"
-	"fmt"
 	"github.com/spf13/cast"
 )
 
-type Link struct {
+type LinkList struct {
 	node
 	dummyHead *node //虚拟头节点
 	size      int
@@ -18,20 +17,24 @@ type node struct {
 }
 
 func main() {
-	link := &Link{dummyHead: &node{nil, nil}}
+	LinkList := &LinkList{dummyHead: &node{nil, nil}}
 	for i := 0; i < 10; i++ {
-		link.AddFirst(i)
+		LinkList.AddFirst(i)
 	}
-	link.ToString()
-	link.Set(10, 1)
-	link.ToString()
-	link.RemoveFirst()
-	link.ToString()
-	link.RemoveLast()
-	link.ToString()
+	LinkList.ToString()
+	LinkList.Set(10, 1)
+	LinkList.ToString()
+	LinkList.RemoveFirst()
+	LinkList.ToString()
+	LinkList.RemoveLast()
+	LinkList.ToString()
 }
 
-func (this *Link) Remove(index int) (elem interface{}) {
+func Init() *LinkList {
+	return &LinkList{dummyHead: &node{nil, nil}}
+}
+
+func (this *LinkList) Remove(index int) (elem interface{}) {
 	if index < 0 || index > this.size {
 		panic("out of range")
 	}
@@ -48,19 +51,19 @@ func (this *Link) Remove(index int) (elem interface{}) {
 	return
 }
 
-func (this *Link) RemoveFirst() {
+func (this *LinkList) RemoveFirst() {
 	this.Remove(0)
 }
 
-func (this *Link) RemoveLast() {
+func (this *LinkList) RemoveLast() {
 	this.Remove(this.size - 1)
 }
 
-func (this *Link) IsEmpty() (bool) {
+func (this *LinkList) IsEmpty() (bool) {
 	return this.size == 0
 }
 
-func (this *Link) Add(elem interface{}, index int) {
+func (this *LinkList) Add(elem interface{}, index int) {
 	if index < 0 || index > this.size {
 		panic(errors.New("out of range "))
 	}
@@ -78,15 +81,15 @@ func (this *Link) Add(elem interface{}, index int) {
 
 }
 
-func (this *Link) AddFirst(elem interface{}) {
+func (this *LinkList) AddFirst(elem interface{}) {
 	this.Add(elem, 0)
 }
 
-func (this *Link) AddLast(elem interface{}) {
+func (this *LinkList) AddLast(elem interface{}) {
 	this.Add(elem, this.size)
 }
 
-func (this *Link) Get(index int) (elem interface{}) {
+func (this *LinkList) Get(index int) (elem interface{}) {
 	if index < 0 || index >= this.size {
 		panic("out of range ")
 	}
@@ -100,15 +103,15 @@ func (this *Link) Get(index int) (elem interface{}) {
 	return cur.Elem
 }
 
-func (this *Link) GetFirst() (elem interface{}) {
+func (this *LinkList) GetFirst() (elem interface{}) {
 	return this.Get(0)
 }
 
-func (this *Link) GetLast() (elem interface{}) {
+func (this *LinkList) GetLast() (elem interface{}) {
 	return this.Get(this.size - 1)
 }
 
-func (this *Link) Set(elem interface{}, index int) {
+func (this *LinkList) Set(elem interface{}, index int) {
 	if index < 0 || index >= this.size {
 		panic("out of range ")
 	}
@@ -122,7 +125,7 @@ func (this *Link) Set(elem interface{}, index int) {
 	cur.Elem = elem
 }
 
-func (this *Link) Contains(elem interface{}) (bool) {
+func (this *LinkList) Contains(elem interface{}) (bool) {
 
 	cur := this.dummyHead.Next
 	for i := 0; i < this.size; i++ {
@@ -135,7 +138,7 @@ func (this *Link) Contains(elem interface{}) (bool) {
 	return false
 }
 
-func (this *Link) ToString() {
+func (this *LinkList) ToString() string {
 	cur := this.dummyHead.Next
 	s := cast.ToString(cur.Elem) + "->"
 	for cur.Next != nil {
@@ -144,5 +147,9 @@ func (this *Link) ToString() {
 
 	}
 	s += "nil"
-	fmt.Println(s)
+	return s
+}
+
+func (this *LinkList) GetSize() int {
+	return this.size
 }
