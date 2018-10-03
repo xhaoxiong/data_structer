@@ -1,4 +1,4 @@
-package queue
+package main
 
 import (
 	"important_test/data_structer/arraryList"
@@ -6,29 +6,19 @@ import (
 	"fmt"
 )
 
+//func main()  {
+//
+//}
+
 type ArraryQueue struct {
 	arraryList.ArraryList
 }
 
-func main() {
-	queue := InitNoParam()
-	for i := 0; i < 10; i++ {
-		queue.EnQueue(i)
-	}
-	queue.ToString()
-	queue.DeQueue()
-	queue.DeQueue()
-	queue.DeQueue()
-	queue.DeQueue()
-	queue.ToString()
-
-}
-
-func InitNoParam() *ArraryQueue {
+func (this *ArraryQueue) InitNoParam() *ArraryQueue {
 	return &ArraryQueue{arraryList.ArraryList{Slice: make([]interface{}, 0)}}
 }
 
-func Init(cap int) *ArraryQueue {
+func (this *ArraryQueue) Init(cap int) *ArraryQueue {
 	return &ArraryQueue{arraryList.ArraryList{Slice: make([]interface{}, 0, cap)}}
 }
 
