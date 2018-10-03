@@ -2,7 +2,6 @@ package queue
 
 import (
 	"github.com/spf13/cast"
-	"fmt"
 )
 
 func main() {
