@@ -3,18 +3,15 @@ package queue
 import (
 	"data_structer/arraryList"
 	"github.com/spf13/cast"
-	"fmt"
 )
 
-//func main()  {
-//
-//}
+
 
 type ArraryQueue struct {
 	arraryList.ArraryList
 }
 
-func (this *ArraryQueue) InitNoParam() *ArraryQueue {
+func InitNoParam() *ArraryQueue {
 	return &ArraryQueue{arraryList.ArraryList{Slice: make([]interface{}, 0)}}
 }
 
@@ -49,7 +46,6 @@ func (this *ArraryQueue) IsEmpty() (bool) {
 
 func (this *ArraryQueue) ToString() string {
 	s := "front ["
-	fmt.Println(this.Slice)
 	for index, sl := range this.Slice {
 
 		if index == len(this.Slice)-1 {

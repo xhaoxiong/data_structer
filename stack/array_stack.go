@@ -2,24 +2,11 @@ package stack
 
 import (
 	"data_structer/arraryList"
-	"fmt"
 	"github.com/spf13/cast"
 )
 
 type ArraryStack struct {
 	arraryList.ArraryList
-}
-
-func main() {
-
-	stack := InitNoParam()
-	for i := 0; i < 10; i++ {
-		stack.Push(i)
-	}
-
-	stack.Pop()
-	fmt.Println(stack.ToString())
-
 }
 
 func InitNoParam() *ArraryStack {

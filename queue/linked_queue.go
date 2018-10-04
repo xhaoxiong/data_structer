@@ -68,7 +68,7 @@ func (this *LinkedQueue) ToString() string {
 	s := "queue front "
 	cur := this.head
 	for i := 0; i < this.Size; i++ {
-		s += cast.ToString(cur.elem) + "->"
+		s += cast.ToString(cur.elem) + "<-"
 		cur = cur.next
 	}
 	s += "tail"

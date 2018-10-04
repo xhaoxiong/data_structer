@@ -3,7 +3,6 @@ package linkList
 import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cast"
-	"fmt"
 )
 
 type LinkList struct {
@@ -68,7 +67,6 @@ func (this *LinkList) NormalRemove(elem interface{}) {
 
 	for prev.Next != nil {
 		cur := prev.Next
-		fmt.Println(cur.Elem)
 		if cur.Elem != elem {
 			prev = prev.Next
 		}

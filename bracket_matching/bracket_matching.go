@@ -1,13 +1,10 @@
-package main
+package bracket_matching
 
 import (
 	"data_structer/stack"
 	"github.com/spf13/cast"
 )
-
-func main() {
-}
-
+//匹配括号
 func isValid(s string) bool {
 
 
