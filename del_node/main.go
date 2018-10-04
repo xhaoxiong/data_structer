@@ -12,8 +12,6 @@ func main() {
 	link := linkList.SliceToList(s)
 	fmt.Println(link.ToString())
 
-	link.GetFirst()
-
 	link.NormalRemove(25)
 	fmt.Println(link.ToString())
 }
