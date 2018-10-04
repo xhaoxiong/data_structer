@@ -3,6 +3,7 @@ package linkList
 import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cast"
+	"fmt"
 )
 
 type LinkList struct {
@@ -33,6 +34,52 @@ func main() {
 func Init() *LinkList {
 	return &LinkList{dummyHead: &node{nil, nil}}
 }
+
+func SliceToList(slice []interface{}) *LinkList {
+	link := Init()
+	for _, s := range slice {
+		link.AddFirst(s)
+	}
+	return link
+}
+
+func (this *LinkList) RemoveRepeat(val interface{}) {
+	this.RecursiveRemove(this.dummyHead, val)
+}
+//递归法Remove链表中重复的值
+func (this *LinkList) RecursiveRemove(head *node, elem interface{}) *node {
+	if head == nil {
+		return nil
+	}
+
+	head.Next = this.RecursiveRemove(head.Next, elem)
+
+	if head.Elem == elem {
+		return head.Next
+	} else {
+		return head
+	}
+}
+
+//正常去除节点
+func (this *LinkList) NormalRemove(elem interface{}) {
+
+	prev := this.dummyHead
+
+	for prev.Next != nil {
+		cur := prev.Next
+		fmt.Println(cur.Elem)
+		if cur.Elem != elem {
+			prev = prev.Next
+		}
+		prev.Next = cur.Next
+
+	}
+
+	return
+}
+
+
 
 func (this *LinkList) Remove(index int) (elem interface{}) {
 	if index < 0 || index > this.size {
