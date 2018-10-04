@@ -1,7 +1,7 @@
 package queue
 
 import (
-	"important_test/data_structer/arraryList"
+	"data_structer/arraryList"
 	"github.com/spf13/cast"
 	"fmt"
 )

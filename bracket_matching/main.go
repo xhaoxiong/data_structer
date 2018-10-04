@@ -1,7 +1,7 @@
 package main
 
 import (
-	"important_test/data_structer/stack"
+	"data_structer/stack"
 	"github.com/spf13/cast"
 )
 

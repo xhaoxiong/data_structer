@@ -1,7 +1,7 @@
 package stack
 
 import (
-	"important_test/data_structer/arraryList"
+	"data_structer/arraryList"
 	"fmt"
 	"github.com/spf13/cast"
 )

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"important_test/data_structer/linkList"
+	"data_structer/linkList"
 	"fmt"
 )
 

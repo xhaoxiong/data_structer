@@ -1,6 +1,6 @@
 package stack
 
-import "important_test/data_structer/linkList"
+import "data_structer/linkList"
 
 type LinkedStack struct {
 	*linkList.LinkList
