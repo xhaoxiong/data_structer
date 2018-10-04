@@ -6,7 +6,8 @@
 
 根据慕课网liuyubobobo老师的玩转数据结构总结的golang版本,对golang基本的数据结构进行了使用
 
-目录-----
+
+     
      |-arraryList :使用slice封装的arraylist 的增删查改 对golang中中slice的基本操作都有涵盖
      |
      |-linkList :golang写的链表及其增删查改 及其有些部分递归的实现
