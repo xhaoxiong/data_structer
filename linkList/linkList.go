@@ -45,6 +45,7 @@ func SliceToList(slice []interface{}) *LinkList {
 func (this *LinkList) RemoveRepeat(val interface{}) {
 	this.RecursiveRemove(this.dummyHead, val)
 }
+
 //递归法Remove链表中重复的值
 func (this *LinkList) RecursiveRemove(head *node, elem interface{}) *node {
 	if head == nil {
@@ -77,8 +78,6 @@ func (this *LinkList) NormalRemove(elem interface{}) {
 	return
 }
 
-
-
 func (this *LinkList) Remove(index int) (elem interface{}) {
 	if index < 0 || index > this.size {
 		panic("out of range")
@@ -106,6 +105,21 @@ func (this *LinkList) RemoveLast() {
 
 func (this *LinkList) IsEmpty() (bool) {
 	return this.size == 0
+}
+
+//递归法给链表添加
+func (this *LinkList) AddRepeat(elem interface{}) {
+	this.dummyHead = this.RecursiveAdd(this.dummyHead, elem)
+}
+
+func (this *LinkList) RecursiveAdd(Node *node, elem interface{}) (n *node) {
+	if Node == nil {
+
+		return &node{Elem: elem}
+	}
+
+	Node.Next = this.RecursiveAdd(Node.Next, elem)
+	return Node
 }
 
 func (this *LinkList) Add(elem interface{}, index int) {

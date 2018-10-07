@@ -59,3 +59,11 @@ func TestLinkList_NormalRemove(t *testing.T) {
 	LinkList.NormalRemove(10)
 	fmt.Println(LinkList.ToString())
 }
+
+func TestLinkList_RecursiveAdd(t *testing.T) {
+	LinkList := &LinkList{dummyHead: &node{nil, nil}}
+	for i := 0; i < 20; i++ {
+		LinkList.AddRepeat(i)
+	}
+	fmt.Println(LinkList.ToString())
+}
