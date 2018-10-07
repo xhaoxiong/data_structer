@@ -7,7 +7,6 @@ package bst
 
 import (
 	"testing"
-	"fmt"
 )
 
 func TestBST_Add(t *testing.T) {
@@ -17,9 +16,11 @@ func TestBST_Add(t *testing.T) {
 		bst.Add(num)
 	}
 
-	fmt.Print(bst.ToString())
-	fmt.Println(bst.Contains(10))
-	fmt.Println(bst.Contains(5))
+	bst.levelOrder()
+	bst.NormalPerOrder()
+	//fmt.Print(bst.ToString())
+	//fmt.Println(bst.Contains(10))
+	//fmt.Println(bst.Contains(5))
 }
 
 /*

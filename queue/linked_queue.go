@@ -43,7 +43,7 @@ func (this *LinkedQueue) EnQueue(elem interface{}) {
 	this.Size++
 }
 
-func (this *LinkedQueue) DeQueue() interface{} {
+func (this *LinkedQueue) DeQueue() (elem interface{}) {
 	if this.IsEmpty() {
 		panic("out of range")
 	}

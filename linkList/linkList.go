@@ -150,7 +150,7 @@ func (this *LinkList) AddLast(elem interface{}) {
 
 func (this *LinkList) Get(index int) (elem interface{}) {
 	if index < 0 || index >= this.size {
-		panic("out of range ")
+		return
 	}
 
 	cur := this.dummyHead.Next

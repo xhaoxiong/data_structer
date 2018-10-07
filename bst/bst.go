@@ -8,6 +8,8 @@ package bst
 import (
 	"fmt"
 	"github.com/spf13/cast"
+	"data_structer/stack"
+	"data_structer/queue"
 )
 
 type BST struct {
@@ -67,7 +69,15 @@ func (this *BST) contains(node *node, elem int) bool {
 }
 
 func (this *BST) PreOrder() {
+	this.preOrder(this.root)
+}
 
+func (this *BST) InOrder() {
+	this.inOrder(this.root)
+}
+
+func (this *BST) PostOrder() {
+	this.postOrder(this.root)
 }
 
 func (this *BST) preOrder(Node *node) {
@@ -78,6 +88,73 @@ func (this *BST) preOrder(Node *node) {
 	fmt.Println(Node.elem)
 	this.preOrder(Node.left)
 	this.preOrder(Node.right)
+}
+
+//非递归遍历
+func (this *BST) NormalPerOrder() {
+	Stack := stack.InitLinkedStack()
+
+	Stack.Push(this.root)
+	for !this.IsEmpty() {
+		if cur, ok := Stack.Peek().(*node); ok {
+
+			Stack.Pop()
+			fmt.Println(cur.elem)
+
+			if cur.right != nil {
+				Stack.Push(cur.right)
+			}
+
+			if cur.left != nil {
+				Stack.Push(cur.left)
+			}
+		} else {
+			break
+		}
+	}
+
+}
+
+func (this *BST) inOrder(Node *node) {
+	if Node == nil {
+		return
+	}
+
+	this.inOrder(Node.left)
+	fmt.Println(Node.elem)
+	this.inOrder(Node.right)
+
+}
+
+func (this *BST) postOrder(Node *node) {
+	if Node == nil {
+		return
+	}
+
+	this.postOrder(Node.left)
+	this.postOrder(Node.right)
+	fmt.Println(Node.elem)
+}
+
+//层序遍历
+func (this *BST) levelOrder() {
+	Queue := queue.Init()
+	Queue.EnQueue(this.root)
+
+	for !Queue.IsEmpty() {
+		cur := Queue.DeQueue().(*node)
+		fmt.Println(cur.elem)
+
+		if cur.left != nil {
+			Queue.EnQueue(cur.left)
+		}
+
+		if cur.right != nil {
+			Queue.EnQueue(cur.right)
+		}
+
+	}
+
 }
 
 func (this *BST) ToString() string {
