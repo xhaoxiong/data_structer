@@ -180,3 +180,72 @@ func (this *BST) GenerateDepthString(depth int) string {
 	}
 	return str
 }
+
+//寻找二分搜索树的最小元素
+func (this *BST) Minimum() (int) {
+	if this.Size == 0 {
+		panic("error")
+	}
+	return this.minimum(this.root).elem
+}
+
+func (this *BST) minimum(Node *node) (*node) {
+	if Node.left == nil {
+		return Node
+	}
+
+	return this.minimum(Node.left)
+
+}
+
+//寻找二分搜索树的最小元素
+func (this *BST) Maximum() (int) {
+	if this.Size == 0 {
+		panic("error")
+	}
+	return this.maximum(this.root).elem
+}
+
+func (this *BST) maximum(Node *node) (*node) {
+	if Node.right == nil {
+		return Node
+	}
+
+	return this.maximum(Node.left)
+
+}
+
+//删除最小值
+func (this *BST) RemoveMin() (int) {
+
+	this.root = this.removeMin(this.root)
+	return this.Minimum()
+}
+
+func (this *BST) removeMin(Node *node) (*node) {
+	if Node.left == nil {
+		rightNode := Node.right
+		Node.right = nil
+		this.Size--
+		return rightNode
+	}
+	Node.left = this.removeMin(Node.left)
+	return Node
+}
+
+//删除最大值
+func (this *BST) RemoveMax() (int) {
+	this.root = this.removeMax(this.root)
+	return this.Maximum()
+}
+
+func (this *BST) removeMax(Node *node) (*node) {
+	if Node.right == nil {
+		leftNode := Node.left
+		Node.left = nil
+		this.Size--
+		return leftNode
+	}
+	Node.right = this.removeMin(Node.right)
+	return Node
+}
