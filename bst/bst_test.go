@@ -17,7 +17,7 @@ func TestBST_Add(t *testing.T) {
 	}
 
 	bst.levelOrder()
-	bst.NormalPerOrder()
+	bst.NormalPreOrder()
 	//fmt.Print(bst.ToString())
 	//fmt.Println(bst.Contains(10))
 	//fmt.Println(bst.Contains(5))

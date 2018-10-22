@@ -91,7 +91,7 @@ func (this *BST) preOrder(Node *node) {
 }
 
 //非递归遍历
-func (this *BST) NormalPerOrder() {
+func (this *BST) NormalPreOrder() {
 	Stack := stack.InitLinkedStack()
 
 	Stack.Push(this.root)
@@ -248,4 +248,14 @@ func (this *BST) removeMax(Node *node) (*node) {
 	}
 	Node.right = this.removeMin(Node.right)
 	return Node
+}
+
+func (this *BST) Remove(Node *node) {
+
+
+
+}
+
+func (this *BST) remove(Node *node) (*node) {
+	return nil
 }
